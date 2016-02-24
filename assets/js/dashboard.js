@@ -1,22 +1,33 @@
 $(document).ready(function(){
   var generateChart = {
     gender: function(data){
+      var male = 0;
+      var female = 0;
+
+      for(var i= 0; i <data.length; i++){
+        if(data[i].person.gender === "M"){
+          male++;
+        } else {
+          female++;
+        }
+      }
 
       var chartData = [
         {
-          value: 0 /* How do we get this value? */,
+          value: male, /* How do we get this value? */,
           color: "rgb(0,127,255)",
           highlight: "rgba(0,127,255,0.5)",
           label: "Male"
         },
         {
-          value: 0 /* How do we get this value? */,
+          value: female, /* How do we get this value? */,
           color: "rgb(255,67,101)",
           highlight: "rgba(255,67,101,0.5)",
           label: "Female"
         }
       ];
 
+      
     },
     orderTotal: function(data){
 
@@ -40,7 +51,17 @@ $(document).ready(function(){
           }
         ]
       };
+      var fillColor = 0;
+      var strokeColor = 0;
+      var highlightFill = 0;
+      var highlightStroke = 0;
 
+      for(var i= 0; i <data.length; i++){
+        if(data[i]. === "M"){
+          male++;
+        } else {
+          female++;
+        }
     },
     orderCategory: function(data){
 
@@ -82,7 +103,9 @@ $(document).ready(function(){
           label: 'Jacket'
         }
       };
-
+      for(var i= 0; i <data.length; i++){
+        //loop over to find females and males
+        console.log(data);
     },
     orderTimeline: function(data){
 
@@ -100,10 +123,16 @@ $(document).ready(function(){
           }
         ]
       };
-
+      for(var i= 0; i <data.length; i++){
+        console.log(data);
     }
   };
 
   // Delete this comment: Perhaps this is where we should make our GET request?
-
+$.get('https://www.batchacademy.com/api/wdfne/dummy/intellidash', function(data){
+  generateChart.gender(data);
+  generateChart.orderTotal(data);
+  generateChart.orderCategory(data);
+  generateChart.orderTimeline(data);
+})
 });
